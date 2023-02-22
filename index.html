@@ -1,12 +1,35 @@
 <html>
 <head>
 <title>Lotter</title>
-<!-- <script src="./node_modules/lodash/lodash.min.js"></script> -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<style>
+    html, body {
+        height: 100%;
+        line-height: 1.8;
+        text-align: center;
+    }
+    table {
+        border: 1px solid #ccc;
+        border-spacing: 0;
+        text-align: center;
+        font-size: 200%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    tr {
+        height: 2em;
+    }
+    tr:nth-child(odd) {
+        background-color: f2f2f2;
+    }
+    td {
+        width: 2em;
+    }    
+</style>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 </head>
 <body>
-<h1>Welcome to Lottory</h1>
-<p id="lott"></p>
 </body>
 <script>
 const lotto = {
@@ -21,31 +44,21 @@ const lotto = {
         return _.sampleSize(new_order, 6);
     }
 };
-/*
-let lottory649 = [];
-for (let i=0; i<5; i++) {
-    lottory649 = lotto.get649();
-    console.log(lottory649.sort(function(a, b){return a - b}));
-}
-*/
 
 function tableCreate() {
     const body = document.body,
           tbl = document.createElement('table');
     let lottory649 = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         lottory649 = lotto.get649();
         lottory649.sort(function(a, b){return a - b});
         const tr = tbl.insertRow();
-        tr.style.height = '2em';
         for (let j = 0; j < 6; j++) {
             const td = tr.insertCell();
             td.appendChild(document.createTextNode(lottory649[j]));
-            td.style.width = '2.5em';
         }
     }
     body.appendChild(tbl);
-    tbl.style.fontSize = "200%";
 }
 tableCreate();
 
@@ -56,19 +69,16 @@ function tableCreate2() {
     const body = document.body,
           tbl = document.createElement('table');
     let lottory649 = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
         lottory649 = lotto.get6492();
         lottory649.sort(function(a, b){return a - b});
         const tr = tbl.insertRow();
-        tr.style.height = '2em';
         for (let j = 0; j < 6; j++) {
             const td = tr.insertCell();
             td.appendChild(document.createTextNode(lottory649[j]));
-            td.style.width = '2.5em';
         }
     }
     body.appendChild(tbl);
-    tbl.style.fontSize = "200%";
 }
 tableCreate2();
 
